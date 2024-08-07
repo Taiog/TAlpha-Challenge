@@ -1,12 +1,12 @@
 import { Button, Divider, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
-import { useGetAllProducts } from '../../hooks/api/useGetAllProducts'
 import { ProductItem } from './components/ProductItem'
-import { useNavigate } from 'react-router-dom'
 import { routesApp } from '../../routes/RoutesApp'
 import { ProductModel } from '../../@types/Models'
+import { useNavigate } from 'react-router-dom'
 import { useDeleteProduct } from '../../hooks/api/useDeleteProduct'
+import { useGetAllProducts } from '../../hooks/api/useGetAllProducts'
 
-export const ListarProdutos = () => {
+export const ListProducts = () => {
     const { data } = useGetAllProducts()
     const navigate = useNavigate()
 
@@ -23,7 +23,7 @@ export const ListarProdutos = () => {
                     colorScheme='teal'
                     variant={'outline'}
                     type='submit'
-                    onClick={() => navigate(routesApp.criar)}>
+                    onClick={() => navigate(routesApp.create)}>
                     Cadastrar
                 </Button>
             </Flex>

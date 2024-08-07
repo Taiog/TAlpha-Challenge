@@ -1,6 +1,5 @@
 import { Flex, Grid, GridItem, Icon } from '@chakra-ui/react'
 import { PencilSimple, Trash } from '@phosphor-icons/react'
-import { Fragment } from 'react/jsx-runtime'
 
 interface ProductItemProps {
     name: string

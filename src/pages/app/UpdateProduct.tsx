@@ -25,12 +25,12 @@ export const UpdateProduct = () => {
         context.setValue('description', data.product.description)
     }, [data])
 
-    console.log(context.watch())
     return (
         <>
             <Text fontSize={'large'} color={'teal'} fontWeight={'bold'} >Atualizar produto</Text>
             <Divider />
             <FormProvider {...context}>
+                <form onSubmit={context.handleSubmit(onSubmit)}>
                 <Flex flexDirection={'column'} gap={'12px'} justifyContent={'center'} h={'100%'}>
                     <ProductForm />
                     <Flex align={'center'} justifyContent={'space-between'} gap={'8px'}>
@@ -38,7 +38,7 @@ export const UpdateProduct = () => {
                             colorScheme='teal'
                             w={'100%'}
                             variant={'outline'}
-                            type='submit'
+                            type='button'
                             onClick={() => navigate(-1)}>
                             Voltar
                         </Button>
@@ -46,12 +46,12 @@ export const UpdateProduct = () => {
                             colorScheme='teal'
                             w={'100%'}
                             type='submit'
-                            isLoading={isLoading}
-                            onClick={() => onSubmit(context.getValues())} >
+                            isLoading={isLoading}>
                             Enviar
                         </Button>
                     </Flex>
                 </Flex>
+                                </form>
             </FormProvider>
         </>
     )

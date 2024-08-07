@@ -21,7 +21,7 @@ export const useCreateProduct = () => {
         onSuccess: () => {
             responseSuccess('Produto criado com sucesso!')
             queryClient.refetchQueries({ queryKey: ['products'] })
-            navigate(routesApp.listar)
+            navigate(routesApp.list)
         },
         onError: (erro: AxiosError) => responseError(erro),
     })
@@ -30,9 +30,9 @@ export const useCreateProduct = () => {
         name: Yup.string()
             .required()
             .label('nome'),
-        price: Yup.number().min(0).required().label('preço'),
+        price: Yup.number().min(0).required().typeError('Insira um número válido').label('preço'),
         stock: Yup.number().min(0)
-            .required()
+            .required().typeError('Insira um número válido')
             .label('quantidade'),
         description: Yup.string()
             .optional()

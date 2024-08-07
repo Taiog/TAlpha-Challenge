@@ -19,6 +19,7 @@ export const LayoutAuth = (props: { children: ReactNode, image: string }) => {
                 width="100%"
                 padding={'15px 30px'}
                 alignItems="center"
+                justifyContent={'center'}
                 backgroundColor={'#E3E3E3'}
             >
                 {props.children}

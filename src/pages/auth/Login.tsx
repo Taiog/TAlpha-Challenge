@@ -1,51 +1,47 @@
-import { Button, Flex, FormLabel, Input } from '@chakra-ui/react'
+import { Button, Flex, FormLabel, Input, Text } from '@chakra-ui/react'
 import { LayoutAuth } from './components/LayoutAuth'
-import { useForm, SubmitHandler } from "react-hook-form"
 import { useNavigate } from 'react-router-dom'
 import { routesApp } from '../../routes/RoutesApp'
-import axios from 'axios'
+import { useLogin } from '../../hooks/api/auth/useLogin'
+import { UserModel } from '../../@types/Models'
 
-interface IFormInput {
-    taxNumber: string
-    password: string
-}
 
 const Login = () => {
-    const { register, getValues } = useForm<IFormInput>()
-    const onSubmit: SubmitHandler<IFormInput> = (data) => {
-        axios.post('https://interview.t-alpha.com.br/api/auth/login', data)
-            .then(function (response) {
-                navigate(routesApp.listar)
-                localStorage.setItem('token', response.data.data.token)
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-
-    }
+    const {mutate, loginContext, isLoading} = useLogin()
+    const {register, handleSubmit} = loginContext
     const navigate = useNavigate()
+
+    const onSubmit = (data: Pick<UserModel, 'taxNumber' | 'password'>) => {
+        mutate(data)
+    }
     return (
         <LayoutAuth image='loginBackground.svg'>
-            <Flex flexDirection={'column'} gap={'8px'} justifyContent={'center'} h={'100%'}>
-                <FormLabel>CPF/CNPJ</FormLabel>
-                <Input {...register("taxNumber")} borderColor={'teal'} placeholder='000.000.000-00' />
-                <FormLabel>Senha</FormLabel>
-                <Input {...register("password")} type='password' borderColor={'teal'} placeholder='*********' />
-                <Button mt={4}
-                    colorScheme='teal'
-                    type='submit'
-                    onClick={() => onSubmit(getValues())} >
-                    Entrar
-                </Button>
-                <Button mt={4}
-                    colorScheme='teal'
-                    variant={'outline'}
-                    type='submit'
-                    onClick={() => navigate(routesApp.cadastro)} >
-                    Cadastre-se
-                </Button>
-            </Flex>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Flex flexDirection={'column'} gap={'8px'} justifyContent={'center'} h={'100%'}>
+                    <FormLabel>CPF/CNPJ</FormLabel>
+                    <Input {...register("taxNumber")} borderColor={'teal'} placeholder='000.000.000-00' />
+                    {loginContext.formState.errors.taxNumber && <Text color={'red'}>{loginContext.formState.errors.taxNumber.message as string}</Text>}
+
+                    <FormLabel>Senha</FormLabel>
+                    <Input {...register("password")} type='password' borderColor={'teal'} placeholder='*********' />
+                    {loginContext.formState.errors.password && <Text color={'red'}>{loginContext.formState.errors.password.message as string}</Text>}
+
+                    <Button mt={4}
+                        colorScheme='teal'
+                        type='submit'
+                        isLoading={isLoading}
+                        >
+                        Entrar
+                    </Button>
+                    <Button mt={4}
+                        colorScheme='teal'
+                        variant={'outline'}
+                        type='button'
+                        onClick={() => navigate(routesApp.cadastro)} >
+                        Cadastre-se
+                    </Button>
+                </Flex>
+            </form>
         </LayoutAuth>
     )
 }

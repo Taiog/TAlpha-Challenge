@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom"
 import { routesApp } from "./RoutesApp"
 import Login from "../pages/auth/Login"
-import { Cadastro } from "../pages/auth/Cadastro"
-import { ListarProdutos } from "../pages/app/ListarProdutos"
+import { CreateProduct } from "../pages/app/CreateProduct"
+import { ListProducts } from "../pages/app/ListProducts"
 import { LayoutUi } from "../components/layout/LayoutUi"
-import { CriarProduto } from "../pages/app/CriarProduto"
 import { UpdateProduct } from "../pages/app/UpdateProduct"
+import { Register } from "../pages/auth/Register"
 
 const mountRoutes: RouteObject[] = [
     {
@@ -14,17 +14,17 @@ const mountRoutes: RouteObject[] = [
     },
     {
         path: routesApp.cadastro,
-        element: <Cadastro />,
+        element: <Register />,
     },
     {
         element: <LayoutUi />,
         children: [{
-            path: routesApp.listar,
-            element: <ListarProdutos />,
+            path: routesApp.list,
+            element: <ListProducts />,
         },
         {
-            path: routesApp.criar,
-            element: <CriarProduto />,
+            path: routesApp.create,
+            element: <CreateProduct />,
         },
         {
             path: routesApp.update(':id'),

@@ -22,23 +22,6 @@ export const styles = {
         background: '#555',
         display: 'block',
       },
-
-      '& .jotai-devtools-UnstyledButton-root': {
-        background: 'transparent !important',
-        '& img': {
-          position: 'absolute',
-          left: '30px !important',
-          bottom: '0px !important',
-          height: '25px !important',
-        },
-      },
-
-      '& .btn-react-query-dev-tools': {
-        position: 'absolute !important',
-        left: '-5px !important',
-        bottom: '-5px !important',
-        width: '30px !important',
-      },
     }
   },
 }
