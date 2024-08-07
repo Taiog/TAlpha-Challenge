@@ -29,9 +29,9 @@ const Login = () => {
         <LayoutAuth image='loginBackground.svg'>
             <Flex flexDirection={'column'} gap={'8px'} justifyContent={'center'} h={'100%'}>
                 <FormLabel>CPF/CNPJ</FormLabel>
-                <Input {...register("taxNumber")} borderColor={'teal'} />
+                <Input {...register("taxNumber")} borderColor={'teal'} placeholder='000.000.000-00' />
                 <FormLabel>Senha</FormLabel>
-                <Input {...register("password")} type='password' borderColor={'teal'} />
+                <Input {...register("password")} type='password' borderColor={'teal'} placeholder='*********' />
                 <Button mt={4}
                     colorScheme='teal'
                     type='submit'

@@ -6,6 +6,7 @@ export const useGetAllProducts = () => {
     const { data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => await endPoint(),
+        refetchOnWindowFocus: false
     })
 
     return { data }

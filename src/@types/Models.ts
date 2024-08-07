@@ -1,7 +1,7 @@
 export interface AbstractModelAttributes {
     id: string
-    createdIn?: Date
-    updatedIn?: Date
+    createdAt?: Date
+    updatedAt?: Date
 }
 
 export interface UserModel extends AbstractModelAttributes {

@@ -33,15 +33,15 @@ export const Cadastro = () => {
         <LayoutAuth image='loginBackground.svg'>
             <Flex flexDirection={'column'} gap={'8px'} justifyContent={'center'} h={'100%'}>
                 <FormLabel>Usuário</FormLabel>
-                <Input {...register("name")} borderColor={'teal'} />
+                <Input {...register("name")} borderColor={'teal'} placeholder='Nome de usuário' />
                 <FormLabel>CPF/CNPJ</FormLabel>
-                <Input {...register("taxNumber")} borderColor={'teal'} />
+                <Input {...register("taxNumber")} borderColor={'teal'} placeholder='000.000.000-00' />
                 <FormLabel>E-mail</FormLabel>
-                <Input {...register("mail")} borderColor={'teal'} />
+                <Input {...register("mail")} borderColor={'teal'} placeholder='teste@teste.com' />
                 <FormLabel>Telefone</FormLabel>
-                <Input {...register("phone")} borderColor={'teal'} />
+                <Input {...register("phone")} borderColor={'teal'} placeholder='(XX) X XXXX-XXXX' />
                 <FormLabel>Senha</FormLabel>
-                <Input {...register("password")} type='password' borderColor={'teal'} />
+                <Input {...register("password")} type='password' borderColor={'teal'} placeholder='*********' />
                 <Button mt={4}
                     colorScheme='teal'
                     type='submit'

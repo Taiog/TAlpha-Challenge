@@ -28,10 +28,9 @@ export const ListarProdutos = () => {
                 </Button>
             </Flex>
             <Divider />
-            <Flex flexDirection={'column'} w={'100%'}>
-
+            <Flex flexDirection={'column'} w={'100%'} gap={{ base: '8px', lg: '0px' }}>
                 {data?.products && (
-                    <Grid templateColumns='1fr 1fr 60px 60px 60px' templateAreas={"'name description price stock actions'"} gap={6} w={'100%'} padding={'8px'}>
+                    <Grid templateColumns='1fr 1fr 60px 60px 60px' templateAreas={"'name description price stock actions'"} gap={6} w={'100%'} padding={'8px'} display={{ base: 'none', lg: 'grid' }}>
                         <GridItem gridArea={'name'} >
                             Nome
                         </GridItem>
